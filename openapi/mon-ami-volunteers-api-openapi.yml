@@ -1,0 +1,170 @@
+openapi: 3.1.0
+info:
+  title: Mon Ami REST Care Plans Volunteers API
+  version: '1.0'
+  description: 'The Mon Ami REST API provides programmatic access to the Mon Ami platform for aging and disability services: clients, care plans, services and rates, copays and funding sources, documents (including InterRAI iCodes), programs and enrollments, people and volunteers, provider referrals, tasks, visits, client calls, sites, and webhook subscriptions. Interoperability is a design standard (open REST API, HL7 FHIR R4, secure SFTP). Contact Mon Ami to obtain API credentials.'
+  contact:
+    name: Mon Ami
+    url: https://docs.monami.io/
+  termsOfService: https://www.monami.io/terms-of-use
+servers:
+- url: https://app.monami.io/api
+  description: Production
+security:
+- basicAuth: []
+tags:
+- name: Volunteers
+paths:
+  /volunteers:
+    get:
+      operationId: listVolunteers
+      summary: List volunteers
+      tags:
+      - Volunteers
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/perPage'
+      - $ref: '#/components/parameters/q'
+      responses:
+        '200':
+          $ref: '#/components/responses/CollectionResponse'
+    post:
+      operationId: createVolunteer
+      summary: Create a volunteer
+      tags:
+      - Volunteers
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/ResourceResponse'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /volunteers/{id}:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    get:
+      operationId: getVolunteer
+      summary: Get a volunteer
+      tags:
+      - Volunteers
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateVolunteer
+      summary: Update a volunteer (partial)
+      tags:
+      - Volunteers
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceResponse'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+components:
+  requestBodies:
+    ResourceBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+  schemas:
+    Collection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        links:
+          type: object
+          description: Pagination navigation URLs.
+          additionalProperties: true
+        meta:
+          type: object
+          description: Pagination metadata including total page counts.
+          additionalProperties: true
+    Resource:
+      type: object
+      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
+      properties:
+        id:
+          type: string
+      additionalProperties: true
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+  responses:
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
+    UnprocessableEntity:
+      description: The request has invalid parameters. See error messages in response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ResourceResponse:
+      description: A single resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+  parameters:
+    q:
+      name: q
+      in: query
+      description: Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values).
+      style: deepObject
+      explode: true
+      schema:
+        type: object
+        additionalProperties: true
+    perPage:
+      name: per_page
+      in: query
+      description: Results per page (default 25, max 50).
+      schema:
+        type: integer
+        default: 25
+        maximum: 50
+    page:
+      name: page
+      in: query
+      description: Page number (default 1).
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic authentication using your API uid and secret (Authorization: Basic base64(uid:secret)). Contact Mon Ami to obtain credentials.'

@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  title: Mon Ami REST Care Plans Documents API
+  version: '1.0'
+  description: 'The Mon Ami REST API provides programmatic access to the Mon Ami platform for aging and disability services: clients, care plans, services and rates, copays and funding sources, documents (including InterRAI iCodes), programs and enrollments, people and volunteers, provider referrals, tasks, visits, client calls, sites, and webhook subscriptions. Interoperability is a design standard (open REST API, HL7 FHIR R4, secure SFTP). Contact Mon Ami to obtain API credentials.'
+  contact:
+    name: Mon Ami
+    url: https://docs.monami.io/
+  termsOfService: https://www.monami.io/terms-of-use
+servers:
+- url: https://app.monami.io/api
+  description: Production
+security:
+- basicAuth: []
+tags:
+- name: Documents
+paths:
+  /clients/{client_id}/documents:
+    parameters:
+    - $ref: '#/components/parameters/clientId'
+    get:
+      operationId: listClientDocuments
+      summary: List a client's documents
+      tags:
+      - Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/CollectionResponse'
+    post:
+      operationId: createClientDocument
+      summary: Create a client document (supports templates and InterRAI iCodes)
+      tags:
+      - Documents
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/ResourceResponse'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /clients/{client_id}/documents/{id}:
+    parameters:
+    - $ref: '#/components/parameters/clientId'
+    - $ref: '#/components/parameters/id'
+    get:
+      operationId: getClientDocument
+      summary: Get a client document
+      tags:
+      - Documents
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateClientDocument
+      summary: Update a client document (partial)
+      tags:
+      - Documents
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceResponse'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+components:
+  requestBodies:
+    ResourceBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+  schemas:
+    Collection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        links:
+          type: object
+          description: Pagination navigation URLs.
+          additionalProperties: true
+        meta:
+          type: object
+          description: Pagination metadata including total page counts.
+          additionalProperties: true
+    Resource:
+      type: object
+      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
+      properties:
+        id:
+          type: string
+      additionalProperties: true
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+  responses:
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
+    UnprocessableEntity:
+      description: The request has invalid parameters. See error messages in response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ResourceResponse:
+      description: A single resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+  parameters:
+    clientId:
+      name: client_id
+      in: path
+      required: true
+      schema:
+        type: string
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic authentication using your API uid and secret (Authorization: Basic base64(uid:secret)). Contact Mon Ami to obtain credentials.'

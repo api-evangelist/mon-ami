@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Mon Ami REST Care Plans Languages API
+  version: '1.0'
+  description: 'The Mon Ami REST API provides programmatic access to the Mon Ami platform for aging and disability services: clients, care plans, services and rates, copays and funding sources, documents (including InterRAI iCodes), programs and enrollments, people and volunteers, provider referrals, tasks, visits, client calls, sites, and webhook subscriptions. Interoperability is a design standard (open REST API, HL7 FHIR R4, secure SFTP). Contact Mon Ami to obtain API credentials.'
+  contact:
+    name: Mon Ami
+    url: https://docs.monami.io/
+  termsOfService: https://www.monami.io/terms-of-use
+servers:
+- url: https://app.monami.io/api
+  description: Production
+security:
+- basicAuth: []
+tags:
+- name: Languages
+paths:
+  /languages:
+    get:
+      operationId: listLanguages
+      summary: List languages
+      tags:
+      - Languages
+      responses:
+        '200':
+          $ref: '#/components/responses/CollectionResponse'
+  /languages/{id}:
+    parameters:
+    - $ref: '#/components/parameters/id'
+    get:
+      operationId: getLanguage
+      summary: Get a language
+      tags:
+      - Languages
+      responses:
+        '200':
+          $ref: '#/components/responses/ResourceResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Collection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        links:
+          type: object
+          description: Pagination navigation URLs.
+          additionalProperties: true
+        meta:
+          type: object
+          description: Pagination metadata including total page counts.
+          additionalProperties: true
+    Resource:
+      type: object
+      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
+      properties:
+        id:
+          type: string
+      additionalProperties: true
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+  responses:
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ResourceResponse:
+      description: A single resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic authentication using your API uid and secret (Authorization: Basic base64(uid:secret)). Contact Mon Ami to obtain credentials.'
