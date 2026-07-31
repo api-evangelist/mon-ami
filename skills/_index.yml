@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mon-ami-openapi.yml
+skills:
+  - file: mon-ami-intake-and-enroll-client.md
+    name: Intake and enroll a client
+    api: openapi/mon-ami-openapi.yml
+    operations: [createClient, createClientDocument, listPrograms, listProgramEnrollments, getClient]
+  - file: mon-ami-record-service-delivery.md
+    name: Record service delivery and subscribe to updates
+    api: openapi/mon-ami-openapi.yml
+    operations: [listClients, listCarePlans, listCarePlanServices, createServiceRecord, createWebhook, listWebhooks]

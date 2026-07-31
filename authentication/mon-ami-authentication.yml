@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.monami.io/
+docs: https://docs.monami.io/
+summary:
+  types: [http]
+  http_schemes: [basic]
+  api_key_in: []
+  oauth2_flows: []
+notes: >-
+  Mon Ami uses HTTP Basic authentication. Credentials are a uid and secret pair
+  passed in the Authorization header as "Basic base64(uid:secret)". API credentials
+  are provisioned by Mon Ami (contact the team via the docs to obtain access).
+  No OAuth 2.0 or API-key-header scheme is documented.
+schemes:
+  - name: basicAuth
+    type: http
+    scheme: basic
+    credential: uid:secret
+    location: Authorization header
+    sources: [openapi/mon-ami-openapi.yml]

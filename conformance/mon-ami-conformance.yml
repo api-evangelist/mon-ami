@@ -1,0 +1,40 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.monami.io/ ; https://www.monami.io/ ; https://trust.monami.io
+standards:
+  - id: rest
+    conforms: true
+    evidence: Documented REST API over HTTP with JSON payloads.
+  - id: hl7-fhir-r4
+    conforms: true
+    evidence: Mon Ami publishes HL7 FHIR R4 support as part of its interoperability architecture.
+  - id: http-basic-auth
+    conforms: true
+    evidence: Authorization Basic base64(uid:secret) per docs.
+  - id: pagination
+    conforms: true
+    evidence: Page-number pagination with links + meta on all list endpoints.
+  - id: webhooks
+    conforms: true
+    evidence: Webhook subscription management (create/list/delete) documented.
+  - id: sftp
+    conforms: true
+    evidence: Secure SFTP listed as a supported interoperability transport.
+  - id: hipaa
+    conforms: true
+    evidence: HIPAA compliance stated on Mon Ami product/security pages.
+  - id: soc2-type-ii
+    conforms: true
+    evidence: SOC 2 Type II certification stated on Mon Ami security pages.
+  - id: fedramp-ready
+    conforms: true
+    evidence: FedRAMP Ready status stated by Mon Ami.
+  - id: wcag-2.1-aa
+    conforms: true
+    evidence: WCAG 2.1 AA accessibility conformance stated by Mon Ami.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: "Errors use a custom { errors: [ { message } ] } envelope, not application/problem+json."
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth 2.0 scheme documented; authentication is HTTP Basic.

@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.monami.io/
+format: custom-json
+envelope: '{ "errors": [ { "message": "descriptive error message" } ] }'
+notes: >-
+  Errors return JSON with an "errors" array; each entry carries a human-readable
+  "message". Multiple errors may appear in one response. This is not RFC 9457
+  application/problem+json.
+problems:
+  - status: 400
+    title: Bad Request
+    meaning: Your request is invalid.
+  - status: 401
+    title: Unauthorized
+    meaning: Your API credentials are wrong.
+    remediation: Verify the uid:secret Basic auth pair; request credentials from Mon Ami.
+  - status: 404
+    title: Not Found
+    meaning: The specified record could not be found.
+  - status: 405
+    title: Method Not Allowed
+    meaning: You tried to access a record with an invalid method.
+  - status: 406
+    title: Not Acceptable
+    meaning: You requested a format that is not json.
+    remediation: Request application/json.
+  - status: 409
+    title: Conflict
+    meaning: The request causes a conflict with existing data.
+  - status: 410
+    title: Gone
+    meaning: The record requested has been removed from the servers.
+  - status: 422
+    title: Unprocessable Entity
+    meaning: The request has invalid parameters. See the messages in the response.
+  - status: 429
+    title: Too Many Requests
+    meaning: You are requesting too many records. Slow down.
+    remediation: Back off and retry.
+  - status: 500
+    title: Internal Server Error
+    meaning: A problem with the Mon Ami server. Try again later.
+  - status: 503
+    title: Service Unavailable
+    meaning: Temporarily offline for maintenance. Try again later.

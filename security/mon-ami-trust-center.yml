@@ -1,0 +1,18 @@
+generated: '2026-07-20'
+method: searched
+source: https://trust.monami.io ; https://www.monami.io/
+url: https://trust.monami.io
+certifications:
+  - SOC 2 Type II
+  - HIPAA
+  - FedRAMP Ready
+  - WCAG 2.1 AA
+evidence:
+  - source: https://www.monami.io/
+    detail: Footer "Security" links to trust.monami.io; product/security pages state HIPAA & SOC 2 Type II and FedRAMP Ready.
+  - source: https://trust.monami.io
+    detail: Mon Ami Trust Center (hosted trust portal).
+notes: >-
+  The trust center is a JavaScript-rendered portal; certifications above are
+  corroborated from Mon Ami's own product and security pages. FedRAMP Ready denotes
+  readiness status, not an active FedRAMP authorization.

@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Mon Ami REST API
+  version: 1.0.0
+extends: openapi/mon-ami-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-20'
+      x-api-provider: mon-ami
+      x-interoperability: [REST, HL7 FHIR R4, SFTP]
+      x-compliance: [HIPAA, SOC 2 Type II, FedRAMP Ready]
+  - target: $.info
+    update:
+      x-authentication: authentication/mon-ami-authentication.yml
+      x-conventions: conventions/mon-ami-conventions.yml
+      x-error-catalog: errors/mon-ami-problem-types.yml
+      x-webhooks: asyncapi/mon-ami-webhooks.yml
+      x-data-model: data-model/mon-ami-data-model.yml

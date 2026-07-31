@@ -1,0 +1,24 @@
+# Mon Ami
+
+> Mon Ami is a modern data-management platform for aging and disability services — case management, billing, assessments, reporting, and compliance for State Units on Aging (SUAs), Area Agencies on Aging (AAAs), I/DD programs, Long-Term Care Ombudsman offices, Medicaid HCBS providers, and Community Care Hubs. Interoperability is a design standard: open REST API, HL7 FHIR R4, and secure SFTP. HIPAA and SOC 2 Type II certified, FedRAMP Ready.
+
+## API
+- [Mon Ami REST API Reference](https://docs.monami.io/): REST over HTTP, JSON, HTTP Basic auth (uid:secret), base URL https://app.monami.io/api. Resources: clients, care plans, services and rates, copays, funding sources, documents (templates + InterRAI iCodes), programs and enrollments, people, volunteers, provider referrals, tasks, visits, client calls, sites, webhooks.
+
+## Specs
+- [OpenAPI (API Evangelist generated)](https://raw.githubusercontent.com/api-evangelist/mon-ami/refs/heads/main/openapi/mon-ami-openapi.yml)
+
+## Conventions
+- Auth: HTTP Basic, Authorization: Basic base64(uid:secret)
+- Pagination: page / per_page (default 25, max 50); responses carry links + meta
+- Filtering: nested q object, ?q[field]=value
+- Errors: { "errors": [ { "message": "..." } ] }; 400/401/404/405/406/409/410/422/429/500/503
+- Webhooks: subscribe via POST /webhooks for live platform notifications
+
+## Docs
+- [Developer documentation](https://docs.monami.io/)
+- [Company site](https://www.monami.io/)
+- [Trust center](https://trust.monami.io)
+- [Terms of Use](https://www.monami.io/terms-of-use)
+- [Privacy Policy](https://www.monami.io/privacy-policy)
+- [Sign in](https://app.monami.io/users/sign_in)

@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.monami.io/
+spec_type: Webhooks
+summary: >-
+  Mon Ami supports webhook subscriptions so integrators receive live notifications
+  when things happen within the Mon Ami platform. Subscriptions are managed through
+  the REST API (list, create, delete). The docs describe delivery semantics and how
+  to implement an HTTP handler for receiving webhook deliveries.
+management:
+  list:   { method: GET,    path: "/api/webhooks",      operation: listWebhooks }
+  create: { method: POST,   path: "/api/webhooks",      operation: createWebhook }
+  delete: { method: DELETE, path: "/api/webhooks/{id}", operation: deleteWebhook }
+delivery:
+  transport: HTTP POST to subscriber-provided handler URL
+  semantics: >-
+    Documented under "Delivery Semantics" and "Implementing an HTTP Handler for the
+    webhook". Mon Ami does not publish an enumerated event-topic catalog or a
+    signature-verification scheme in the public reference; subscribers register a
+    handler and receive notifications for platform events.
+events:
+  note: >-
+    Mon Ami does not publish a fixed, enumerated list of webhook event topics in the
+    public API reference. Events correspond to changes on platform resources
+    (e.g. clients, service records, documents). No topics are asserted here to avoid
+    fabrication.
+notes: >-
+  No standalone AsyncAPI document is published by Mon Ami. This artifact captures the
+  documented webhook surface as an event-surface signal.

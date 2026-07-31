@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.monami.io/
+authentication:
+  style: http-basic
+  detail: Authorization Basic base64(uid:secret)
+  ref: authentication/mon-ami-authentication.yml
+pagination:
+  style: page-number
+  params:
+    page: { default: 1 }
+    per_page: { default: 25, max: 50 }
+  response_fields:
+    - links   # navigation URLs (self/next/prev)
+    - meta    # total page counts and pagination metadata
+  detail: >-
+    All list endpoints are paginated. Responses include a links object (navigation
+    URLs) and a meta object (total page counts).
+filtering:
+  style: nested-query-object
+  param: q
+  syntax:
+    - "?q[field]=value"
+    - "?q[field][]=value1&q[field][]=value2"
+  detail: Filters nest under a single q query parameter.
+idempotency:
+  supported: false
+  detail: No idempotency-key mechanism is documented by Mon Ami.
+versioning:
+  scheme: none-documented
+  detail: The API base path is /api with no version segment; no versioning scheme is published.
+error_envelope:
+  shape: '{ "errors": [ { "message": "..." } ] }'
+  format: custom-json
+  ref: errors/mon-ami-problem-types.yml
+rate_limiting:
+  documented: partial
+  detail: A 429 (Too Many Requests) status is returned for excessive requests; no explicit limit values or rate-limit headers are documented.
+content_type:
+  request: application/json
+  response: application/json
+  detail: A non-json Accept returns 406 Not Acceptable.
+webhooks:
+  supported: true
+  ref: asyncapi/mon-ami-webhooks.yml
+interoperability:
+  standards: [REST, HL7 FHIR R4, SFTP]
+  detail: Interoperability is a design standard (open REST API, HL7 FHIR R4, secure SFTP).

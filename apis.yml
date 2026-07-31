@@ -1,8 +1,28 @@
 aid: mon-ami
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mon-ami.png
 name: Mon Ami
-description: 'Mon Ami is a company surfaced as a portfolio company of cowboy-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: healthcare. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Mon Ami is a modern data-management platform for aging and disability services,
+  unifying case management, billing, evidence-based assessments, reporting, and
+  compliance in one system. It serves State Units on Aging (SUAs), Area Agencies on
+  Aging (AAAs), Intellectual & Developmental Disabilities (I/DD) programs,
+  Long-Term Care Ombudsman offices, Medicaid HCBS providers, and Community Care Hubs.
+  Mon Ami exposes a REST API (clients, care plans, services, copays, documents,
+  programs, people, volunteers, referrals, tasks, visits, and webhooks) and treats
+  interoperability as a design standard with open REST, HL7 FHIR R4, and secure SFTP.
+  The platform is HIPAA and SOC 2 Type II certified and FedRAMP Ready.
 url: https://raw.githubusercontent.com/api-evangelist/mon-ami/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,11 +32,391 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Healthcare
-apis: []
+- Aging Services
+- Disability Services
+- Case Management
+- Care Coordination
+- HL7 FHIR
+- HIPAA
+apis:
+- aid: mon-ami:mon-ami-care-plans-api
+  name: Mon Ami Care Plans API
+  description: The Care Plans API from Mon Ami — 4 operation(s) for care plans.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Care Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-care-plans-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-client-calls-api
+  name: Mon Ami Client Calls API
+  description: The Client Calls API from Mon Ami — 2 operation(s) for client calls.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Client Calls
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-client-calls-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-clients-api
+  name: Mon Ami Clients API
+  description: The Clients API from Mon Ami — 4 operation(s) for clients.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-clients-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-copays-api
+  name: Mon Ami Copays API
+  description: The Copays API from Mon Ami — 2 operation(s) for copays.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Copays
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-copays-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-documents-api
+  name: Mon Ami Documents API
+  description: The Documents API from Mon Ami — 2 operation(s) for documents.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-documents-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-funding-sources-api
+  name: Mon Ami Funding Sources API
+  description: The Funding Sources API from Mon Ami — 2 operation(s) for funding sources.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Funding Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-funding-sources-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-languages-api
+  name: Mon Ami Languages API
+  description: The Languages API from Mon Ami — 2 operation(s) for languages.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Languages
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-languages-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-people-api
+  name: Mon Ami People API
+  description: The People API from Mon Ami — 2 operation(s) for people.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - People
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-people-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-programs-api
+  name: Mon Ami Programs API
+  description: The Programs API from Mon Ami — 4 operation(s) for programs.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Programs
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-programs-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-provider-referrals-api
+  name: Mon Ami Provider Referrals API
+  description: The Provider Referrals API from Mon Ami — 2 operation(s) for provider referrals.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Provider Referrals
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-provider-referrals-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-providers-api
+  name: Mon Ami Providers API
+  description: The Providers API from Mon Ami — 2 operation(s) for providers.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-providers-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-services-api
+  name: Mon Ami Services API
+  description: The Services API from Mon Ami — 6 operation(s) for services.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-services-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-sites-api
+  name: Mon Ami Sites API
+  description: The Sites API from Mon Ami — 1 operation(s) for sites.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-sites-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-tasks-api
+  name: Mon Ami Tasks API
+  description: The Tasks API from Mon Ami — 3 operation(s) for tasks.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-tasks-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-visits-api
+  name: Mon Ami Visits API
+  description: The Visits API from Mon Ami — 2 operation(s) for visits.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Visits
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-visits-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-volunteers-api
+  name: Mon Ami Volunteers API
+  description: The Volunteers API from Mon Ami — 2 operation(s) for volunteers.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Volunteers
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-volunteers-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
+- aid: mon-ami:mon-ami-webhooks-api
+  name: Mon Ami Webhooks API
+  description: The Webhooks API from Mon Ami — 2 operation(s) for webhooks.
+  humanURL: https://docs.monami.io/
+  baseURL: https://app.monami.io/api
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/mon-ami-webhooks-api-openapi.yml
+  - type: Authentication
+    url: authentication/mon-ami-authentication.yml
+  - type: Conventions
+    url: conventions/mon-ami-conventions.yml
+  - type: ErrorCatalog
+    url: errors/mon-ami-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/mon-ami-webhooks.yml
+  - type: DataModel
+    url: data-model/mon-ami-data-model.yml
+  - type: LLMsTxt
+    url: llms/mon-ami-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +425,32 @@ maintainers:
 common:
 - type: Website
   url: https://www.monami.io
+- type: DeveloperPortal
+  url: https://docs.monami.io/
+- type: Documentation
+  url: https://docs.monami.io/
+- type: APIReference
+  url: https://docs.monami.io/
+- type: GettingStarted
+  url: https://docs.monami.io/
+- type: Login
+  url: https://app.monami.io/users/sign_in
+- type: TermsOfService
+  url: https://www.monami.io/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.monami.io/privacy-policy
+- type: TrustCenter
+  url: https://trust.monami.io
+- type: Compliance
+  url: https://trust.monami.io
+- type: Blog
+  url: https://www.monami.io/resources/?type=ar
+- type: Conformance
+  url: conformance/mon-ami-conformance.yml
+- type: DomainSecurity
+  url: security/mon-ami-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v1

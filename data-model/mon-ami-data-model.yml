@@ -1,0 +1,75 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mon-ami-openapi.yml
+note: >-
+  Entity graph derived from the Mon Ami REST resource paths. Nested paths establish
+  ownership (belongs_to/has_many); flat resources are listed as entities. Only
+  relationships evidenced by the documented URL structure are asserted.
+entities:
+  - name: Client
+    path: /clients
+    relationships:
+      - { type: has_many, target: CarePlan, via: care_plans }
+      - { type: has_many, target: Copay, via: copays }
+      - { type: has_many, target: Document, via: documents }
+      - { type: has_many, target: ProgramEnrollment, via: program_enrollments }
+  - name: CarePlan
+    path: /clients/{client_id}/care_plans
+    relationships:
+      - { type: belongs_to, target: Client, via: client_id }
+      - { type: has_many, target: CarePlanService, via: services }
+  - name: CarePlanService
+    path: /clients/{client_id}/care_plans/{care_plan_id}/services
+    relationships:
+      - { type: belongs_to, target: CarePlan, via: care_plan_id }
+  - name: Copay
+    path: /clients/{client_id}/copays
+    relationships:
+      - { type: belongs_to, target: Client, via: client_id }
+  - name: Document
+    path: /clients/{client_id}/documents
+    note: Supports templates and InterRAI iCodes (assessment data).
+    relationships:
+      - { type: belongs_to, target: Client, via: client_id }
+  - name: ProgramEnrollment
+    path: /clients/{client_id}/program_enrollments
+    relationships:
+      - { type: belongs_to, target: Client, via: client_id }
+      - { type: belongs_to, target: Program, via: program }
+  - name: Program
+    path: /programs
+    relationships:
+      - { type: has_many, target: ProgramEnrollment, via: program_enrollments }
+  - name: ClientCall
+    path: /client_calls
+  - name: FundingSource
+    path: /funding_sources
+  - name: Language
+    path: /languages
+  - name: Person
+    path: /people
+  - name: ProviderReferral
+    path: /provider_referrals
+    relationships:
+      - { type: belongs_to, target: Provider, via: provider }
+  - name: Provider
+    path: /providers
+    relationships:
+      - { type: has_many, target: ProviderReferral, via: provider_referrals }
+  - name: ServiceDefinition
+    path: /service_definitions
+  - name: ServiceRate
+    path: /service_rates
+  - name: ServiceRecord
+    path: /service_records
+  - name: Site
+    path: /sites
+  - name: Task
+    path: /tasks
+    note: Tasks accept comments via /tasks/{id}/comments.
+  - name: Visit
+    path: /visits
+  - name: Volunteer
+    path: /volunteers
+  - name: Webhook
+    path: /webhooks

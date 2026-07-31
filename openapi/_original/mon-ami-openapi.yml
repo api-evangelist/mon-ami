@@ -1,0 +1,680 @@
+openapi: 3.1.0
+# x-provenance
+# generated: '2026-07-20'
+# method: generated
+# source: https://docs.monami.io/ (Mon Ami REST API Reference)
+# note: Faithfully generated from the published Mon Ami REST API reference. Paths,
+#       methods, operationIds, authentication, pagination and the error envelope are
+#       taken verbatim from the docs; request/response object schemas are kept generic
+#       (resource objects carry an id) because Mon Ami does not publish field-level
+#       schemas. No endpoints, parameters, or fields were invented.
+info:
+  title: Mon Ami REST API
+  version: '1.0'
+  description: >-
+    The Mon Ami REST API provides programmatic access to the Mon Ami platform for
+    aging and disability services: clients, care plans, services and rates, copays
+    and funding sources, documents (including InterRAI iCodes), programs and
+    enrollments, people and volunteers, provider referrals, tasks, visits, client
+    calls, sites, and webhook subscriptions. Interoperability is a design standard
+    (open REST API, HL7 FHIR R4, secure SFTP). Contact Mon Ami to obtain API
+    credentials.
+  contact:
+    name: Mon Ami
+    url: https://docs.monami.io/
+  termsOfService: https://www.monami.io/terms-of-use
+servers:
+  - url: https://app.monami.io/api
+    description: Production
+security:
+  - basicAuth: []
+tags:
+  - name: Clients
+  - name: Care Plans
+  - name: Copays
+  - name: Documents
+  - name: Programs
+  - name: Client Calls
+  - name: Funding Sources
+  - name: Languages
+  - name: People
+  - name: Provider Referrals
+  - name: Providers
+  - name: Services
+  - name: Sites
+  - name: Tasks
+  - name: Visits
+  - name: Volunteers
+  - name: Webhooks
+paths:
+  /clients:
+    get:
+      operationId: listClients
+      summary: List clients
+      tags: [Clients]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/q'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+    post:
+      operationId: createClient
+      summary: Create a client
+      tags: [Clients]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '201': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /clients/{client_id}:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+    get:
+      operationId: getClient
+      summary: Get a client
+      tags: [Clients]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      operationId: updateClient
+      summary: Update a client (partial)
+      tags: [Clients]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /clients/{client_id}/status:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+    patch:
+      operationId: updateClientStatus
+      summary: Update a client's status
+      tags: [Clients]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /clients/{client_id}/adopt:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+    post:
+      operationId: adoptClient
+      summary: Adopt a client
+      tags: [Clients]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /clients/{client_id}/care_plans:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+    get:
+      operationId: listCarePlans
+      summary: List a client's care plans
+      tags: [Care Plans]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /clients/{client_id}/care_plans/{id}:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getCarePlan
+      summary: Get a care plan
+      tags: [Care Plans]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /clients/{client_id}/care_plans/{care_plan_id}/services:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+      - $ref: '#/components/parameters/carePlanId'
+    get:
+      operationId: listCarePlanServices
+      summary: List services on a care plan
+      tags: [Care Plans]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /clients/{client_id}/care_plans/{care_plan_id}/services/{id}:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+      - $ref: '#/components/parameters/carePlanId'
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getCarePlanService
+      summary: Get a care plan service
+      tags: [Care Plans]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /clients/{client_id}/copays:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+    get:
+      operationId: listCopays
+      summary: List a client's copays
+      tags: [Copays]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /clients/{client_id}/copays/{id}:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getCopay
+      summary: Get a copay
+      tags: [Copays]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /clients/{client_id}/documents:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+    get:
+      operationId: listClientDocuments
+      summary: List a client's documents
+      tags: [Documents]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+    post:
+      operationId: createClientDocument
+      summary: Create a client document (supports templates and InterRAI iCodes)
+      tags: [Documents]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '201': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /clients/{client_id}/documents/{id}:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getClientDocument
+      summary: Get a client document
+      tags: [Documents]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      operationId: updateClientDocument
+      summary: Update a client document (partial)
+      tags: [Documents]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /clients/{client_id}/program_enrollments:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+    get:
+      operationId: listProgramEnrollments
+      summary: List a client's program enrollments
+      tags: [Programs]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /clients/{client_id}/program_enrollments/{id}:
+    parameters:
+      - $ref: '#/components/parameters/clientId'
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getProgramEnrollment
+      summary: Get a program enrollment
+      tags: [Programs]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /client_calls:
+    get:
+      operationId: listClientCalls
+      summary: List client calls
+      tags: [Client Calls]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/q'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /client_calls/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getClientCall
+      summary: Get a client call
+      tags: [Client Calls]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /funding_sources:
+    get:
+      operationId: listFundingSources
+      summary: List funding sources
+      tags: [Funding Sources]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /funding_sources/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getFundingSource
+      summary: Get a funding source
+      tags: [Funding Sources]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /languages:
+    get:
+      operationId: listLanguages
+      summary: List languages
+      tags: [Languages]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /languages/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getLanguage
+      summary: Get a language
+      tags: [Languages]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /people:
+    get:
+      operationId: listPeople
+      summary: List people
+      tags: [People]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/q'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /people/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getPerson
+      summary: Get a person
+      tags: [People]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      operationId: updatePerson
+      summary: Update a person (partial)
+      tags: [People]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /programs:
+    get:
+      operationId: listPrograms
+      summary: List programs
+      tags: [Programs]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /programs/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getProgram
+      summary: Get a program
+      tags: [Programs]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /provider_referrals:
+    get:
+      operationId: listProviderReferrals
+      summary: List provider referrals
+      tags: [Provider Referrals]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/q'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+    post:
+      operationId: createProviderReferral
+      summary: Create a provider referral
+      tags: [Provider Referrals]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '201': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /provider_referrals/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getProviderReferral
+      summary: Get a provider referral
+      tags: [Provider Referrals]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      operationId: updateProviderReferral
+      summary: Update a provider referral (partial)
+      tags: [Provider Referrals]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /providers:
+    get:
+      operationId: listProviders
+      summary: List providers
+      tags: [Providers]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /providers/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getProvider
+      summary: Get a provider
+      tags: [Providers]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /service_definitions:
+    get:
+      operationId: listServiceDefinitions
+      summary: List service definitions
+      tags: [Services]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /service_definitions/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getServiceDefinition
+      summary: Get a service definition
+      tags: [Services]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /service_rates:
+    get:
+      operationId: listServiceRates
+      summary: List service rates
+      tags: [Services]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /service_rates/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getServiceRate
+      summary: Get a service rate
+      tags: [Services]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /service_records:
+    get:
+      operationId: listServiceRecords
+      summary: List service records
+      tags: [Services]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/q'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+    post:
+      operationId: createServiceRecord
+      summary: Create a service record
+      tags: [Services]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '201': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /service_records/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getServiceRecord
+      summary: Get a service record
+      tags: [Services]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /sites:
+    get:
+      operationId: listSites
+      summary: List sites
+      tags: [Sites]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /tasks:
+    get:
+      operationId: listTasks
+      summary: List tasks
+      tags: [Tasks]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/q'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /tasks/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getTask
+      summary: Get a task
+      tags: [Tasks]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /tasks/{id}/comments:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    post:
+      operationId: createTaskComment
+      summary: Add a comment to a task
+      tags: [Tasks]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '201': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /visits:
+    get:
+      operationId: listVisits
+      summary: List visits
+      tags: [Visits]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/q'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+  /visits/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getVisit
+      summary: Get a visit
+      tags: [Visits]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /volunteers:
+    get:
+      operationId: listVolunteers
+      summary: List volunteers
+      tags: [Volunteers]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/perPage'
+        - $ref: '#/components/parameters/q'
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+    post:
+      operationId: createVolunteer
+      summary: Create a volunteer
+      tags: [Volunteers]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '201': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /volunteers/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getVolunteer
+      summary: Get a volunteer
+      tags: [Volunteers]
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      operationId: updateVolunteer
+      summary: Update a volunteer (partial)
+      tags: [Volunteers]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '200': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      summary: List webhook subscriptions
+      tags: [Webhooks]
+      responses:
+        '200': { $ref: '#/components/responses/CollectionResponse' }
+    post:
+      operationId: createWebhook
+      summary: Create a webhook subscription
+      tags: [Webhooks]
+      requestBody: { $ref: '#/components/requestBodies/ResourceBody' }
+      responses:
+        '201': { $ref: '#/components/responses/ResourceResponse' }
+        '422': { $ref: '#/components/responses/UnprocessableEntity' }
+  /webhooks/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    delete:
+      operationId: deleteWebhook
+      summary: Delete a webhook subscription
+      tags: [Webhooks]
+      responses:
+        '204': { description: Webhook subscription deleted }
+        '404': { $ref: '#/components/responses/NotFound' }
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication using your API uid and secret
+        (Authorization: Basic base64(uid:secret)). Contact Mon Ami to obtain credentials.
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number (default 1).
+      schema: { type: integer, default: 1, minimum: 1 }
+    perPage:
+      name: per_page
+      in: query
+      description: Results per page (default 25, max 50).
+      schema: { type: integer, default: 25, maximum: 50 }
+    q:
+      name: q
+      in: query
+      description: >-
+        Filter object. Filters nest under a single q parameter using q[field]=value
+        (or q[field][]=v1&q[field][]=v2 for multiple values).
+      style: deepObject
+      explode: true
+      schema: { type: object, additionalProperties: true }
+    id:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+    clientId:
+      name: client_id
+      in: path
+      required: true
+      schema: { type: string }
+    carePlanId:
+      name: care_plan_id
+      in: path
+      required: true
+      schema: { type: string }
+  requestBodies:
+    ResourceBody:
+      required: true
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Resource' }
+  responses:
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Collection' }
+    ResourceResponse:
+      description: A single resource.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Resource' }
+    Unauthorized:
+      description: Your API credentials are wrong.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    UnprocessableEntity:
+      description: The request has invalid parameters. See error messages in response.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    TooManyRequests:
+      description: You are requesting too many records. Slow down.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Resource:
+      type: object
+      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
+      properties:
+        id: { type: string }
+      additionalProperties: true
+    Collection:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Resource' }
+        links:
+          type: object
+          description: Pagination navigation URLs.
+          additionalProperties: true
+        meta:
+          type: object
+          description: Pagination metadata including total page counts.
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message: { type: string }
