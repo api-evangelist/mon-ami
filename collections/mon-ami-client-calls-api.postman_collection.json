@@ -1,0 +1,307 @@
+{
+  "item": [
+    {
+      "id": "50f67a12-9622-489f-b3c5-7bbc68c9ccd0",
+      "name": "Client Calls",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c4d6f15-52f0-4d1a-8427-af28357259ad",
+          "name": "List client calls",
+          "request": {
+            "name": "List client calls",
+            "description": {},
+            "url": {
+              "path": [
+                "client_calls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (default 1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Results per page (default 25, max 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "q[key_0]",
+                  "value": "true",
+                  "description": "Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values)."
+                },
+                {
+                  "disabled": false,
+                  "key": "q[key_1]",
+                  "value": "1887",
+                  "description": "Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc2cd2d5-45d4-4a97-94c1-ad59ce438e3b",
+              "name": "A paginated collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client_calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "key": "q[key_0]",
+                      "value": ""
+                    },
+                    {
+                      "key": "q[key_1]",
+                      "value": "string"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"key_0\": 4937,\n      \"key_1\": \"string\"\n    },\n    {\n      \"id\": \"string\"\n    }\n  ],\n  \"links\": {\n    \"key_0\": 2379\n  },\n  \"meta\": {\n    \"key_0\": 4718,\n    \"key_1\": 8161.006396277803,\n    \"key_2\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "155823a9-5e70-4119-a7b4-8110ffa2e25b",
+          "name": "Get a client call",
+          "request": {
+            "name": "Get a client call",
+            "description": {},
+            "url": {
+              "path": [
+                "client_calls",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad20f69f-b737-430f-a7e0-d02555384319",
+              "name": "A single resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client_calls",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a9fd8a5-eda8-44b6-b3e4-d2916c07ba8e",
+              "name": "The specified record could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client_calls",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.monami.io/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9bf0126a-91c0-447f-a658-a6170ef6f71a",
+    "name": "Mon Ami REST Care Plans Client Calls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Mon Ami REST API provides programmatic access to the Mon Ami platform for aging and disability services: clients, care plans, services and rates, copays and funding sources, documents (including InterRAI iCodes), programs and enrollments, people and volunteers, provider referrals, tasks, visits, client calls, sites, and webhook subscriptions. Interoperability is a design standard (open REST API, HL7 FHIR R4, secure SFTP). Contact Mon Ami to obtain API credentials.\n\nContact Support:\n Name: Mon Ami",
+      "type": "text/plain"
+    }
+  }
+}

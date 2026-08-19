@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mon Ami REST Care Plans Programs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Programs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a client's program enrollments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id/program_enrollments",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a client's program enrollments"
+        },
+        {
+          "info": {
+            "name": "Get a program enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id/program_enrollments/:id",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a program enrollment"
+        },
+        {
+          "info": {
+            "name": "List programs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/programs"
+          },
+          "docs": "List programs"
+        },
+        {
+          "info": {
+            "name": "Get a program",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/programs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a program"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

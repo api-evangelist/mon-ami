@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mon Ami REST Care Plans Copays API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Copays",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a client's copays",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id/copays",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a client's copays"
+        },
+        {
+          "info": {
+            "name": "Get a copay",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id/copays/:id",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a copay"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

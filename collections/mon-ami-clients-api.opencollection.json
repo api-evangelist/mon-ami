@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mon Ami REST Care Plans Clients API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default 1)."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (default 25, max 50)."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values)."
+              }
+            ]
+          },
+          "docs": "List clients"
+        },
+        {
+          "info": {
+            "name": "Create a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.monami.io/api/clients",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a client"
+        },
+        {
+          "info": {
+            "name": "Get a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a client"
+        },
+        {
+          "info": {
+            "name": "Update a client (partial)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.monami.io/api/clients/:client_id",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a client (partial)"
+        },
+        {
+          "info": {
+            "name": "Update a client's status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.monami.io/api/clients/:client_id/status",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a client's status"
+        },
+        {
+          "info": {
+            "name": "Adopt a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.monami.io/api/clients/:client_id/adopt",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Adopt a client"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

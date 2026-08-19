@@ -2,46 +2,121 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/mon-ami-openapi.yml
-note: >-
-  Mon Ami does not publish an official hosted/remote MCP server. This is a CANDIDATE
-  tool list derived one-to-one from the documented REST operations, for use when
-  forging an MCP server over the Mon Ami API. Auth is HTTP Basic (uid:secret).
+note: Mon Ami does not publish an official hosted/remote MCP server. This is a CANDIDATE tool list derived
+  one-to-one from the documented REST operations, for use when forging an MCP server over the Mon Ami
+  API. Auth is HTTP Basic (uid:secret).
 server:
   name: mon-ami
   transport: http
 tools:
-  - { name: list_clients, description: List clients, source_operation: openapi/mon-ami-openapi.yml#listClients }
-  - { name: get_client, description: Get a client, source_operation: openapi/mon-ami-openapi.yml#getClient }
-  - { name: create_client, description: Create a client, source_operation: openapi/mon-ami-openapi.yml#createClient }
-  - { name: update_client, description: Update a client, source_operation: openapi/mon-ami-openapi.yml#updateClient }
-  - { name: update_client_status, description: Update a client status, source_operation: openapi/mon-ami-openapi.yml#updateClientStatus }
-  - { name: adopt_client, description: Adopt a client, source_operation: openapi/mon-ami-openapi.yml#adoptClient }
-  - { name: list_care_plans, description: List care plans, source_operation: openapi/mon-ami-openapi.yml#listCarePlans }
-  - { name: get_care_plan, description: Get a care plan, source_operation: openapi/mon-ami-openapi.yml#getCarePlan }
-  - { name: list_care_plan_services, description: List care plan services, source_operation: openapi/mon-ami-openapi.yml#listCarePlanServices }
-  - { name: list_copays, description: List copays, source_operation: openapi/mon-ami-openapi.yml#listCopays }
-  - { name: list_client_documents, description: List client documents, source_operation: openapi/mon-ami-openapi.yml#listClientDocuments }
-  - { name: create_client_document, description: Create a client document, source_operation: openapi/mon-ami-openapi.yml#createClientDocument }
-  - { name: update_client_document, description: Update a client document, source_operation: openapi/mon-ami-openapi.yml#updateClientDocument }
-  - { name: list_program_enrollments, description: List program enrollments, source_operation: openapi/mon-ami-openapi.yml#listProgramEnrollments }
-  - { name: list_client_calls, description: List client calls, source_operation: openapi/mon-ami-openapi.yml#listClientCalls }
-  - { name: list_funding_sources, description: List funding sources, source_operation: openapi/mon-ami-openapi.yml#listFundingSources }
-  - { name: list_people, description: List people, source_operation: openapi/mon-ami-openapi.yml#listPeople }
-  - { name: update_person, description: Update a person, source_operation: openapi/mon-ami-openapi.yml#updatePerson }
-  - { name: list_programs, description: List programs, source_operation: openapi/mon-ami-openapi.yml#listPrograms }
-  - { name: list_provider_referrals, description: List provider referrals, source_operation: openapi/mon-ami-openapi.yml#listProviderReferrals }
-  - { name: create_provider_referral, description: Create a provider referral, source_operation: openapi/mon-ami-openapi.yml#createProviderReferral }
-  - { name: list_providers, description: List providers, source_operation: openapi/mon-ami-openapi.yml#listProviders }
-  - { name: list_service_definitions, description: List service definitions, source_operation: openapi/mon-ami-openapi.yml#listServiceDefinitions }
-  - { name: list_service_rates, description: List service rates, source_operation: openapi/mon-ami-openapi.yml#listServiceRates }
-  - { name: list_service_records, description: List service records, source_operation: openapi/mon-ami-openapi.yml#listServiceRecords }
-  - { name: create_service_record, description: Create a service record, source_operation: openapi/mon-ami-openapi.yml#createServiceRecord }
-  - { name: list_sites, description: List sites, source_operation: openapi/mon-ami-openapi.yml#listSites }
-  - { name: list_tasks, description: List tasks, source_operation: openapi/mon-ami-openapi.yml#listTasks }
-  - { name: create_task_comment, description: Add a task comment, source_operation: openapi/mon-ami-openapi.yml#createTaskComment }
-  - { name: list_visits, description: List visits, source_operation: openapi/mon-ami-openapi.yml#listVisits }
-  - { name: list_volunteers, description: List volunteers, source_operation: openapi/mon-ami-openapi.yml#listVolunteers }
-  - { name: create_volunteer, description: Create a volunteer, source_operation: openapi/mon-ami-openapi.yml#createVolunteer }
-  - { name: list_webhooks, description: List webhook subscriptions, source_operation: openapi/mon-ami-openapi.yml#listWebhooks }
-  - { name: create_webhook, description: Create a webhook subscription, source_operation: openapi/mon-ami-openapi.yml#createWebhook }
-  - { name: delete_webhook, description: Delete a webhook subscription, source_operation: openapi/mon-ami-openapi.yml#deleteWebhook }
+- name: list_clients
+  description: List clients
+  source_operation: openapi/mon-ami-openapi.yml#listClients
+- name: get_client
+  description: Get a client
+  source_operation: openapi/mon-ami-openapi.yml#getClient
+- name: create_client
+  description: Create a client
+  source_operation: openapi/mon-ami-openapi.yml#createClient
+- name: update_client
+  description: Update a client
+  source_operation: openapi/mon-ami-openapi.yml#updateClient
+- name: update_client_status
+  description: Update a client status
+  source_operation: openapi/mon-ami-openapi.yml#updateClientStatus
+- name: adopt_client
+  description: Adopt a client
+  source_operation: openapi/mon-ami-openapi.yml#adoptClient
+- name: list_care_plans
+  description: List care plans
+  source_operation: openapi/mon-ami-openapi.yml#listCarePlans
+- name: get_care_plan
+  description: Get a care plan
+  source_operation: openapi/mon-ami-openapi.yml#getCarePlan
+- name: list_care_plan_services
+  description: List care plan services
+  source_operation: openapi/mon-ami-openapi.yml#listCarePlanServices
+- name: list_copays
+  description: List copays
+  source_operation: openapi/mon-ami-openapi.yml#listCopays
+- name: list_client_documents
+  description: List client documents
+  source_operation: openapi/mon-ami-openapi.yml#listClientDocuments
+- name: create_client_document
+  description: Create a client document
+  source_operation: openapi/mon-ami-openapi.yml#createClientDocument
+- name: update_client_document
+  description: Update a client document
+  source_operation: openapi/mon-ami-openapi.yml#updateClientDocument
+- name: list_program_enrollments
+  description: List program enrollments
+  source_operation: openapi/mon-ami-openapi.yml#listProgramEnrollments
+- name: list_client_calls
+  description: List client calls
+  source_operation: openapi/mon-ami-openapi.yml#listClientCalls
+- name: list_funding_sources
+  description: List funding sources
+  source_operation: openapi/mon-ami-openapi.yml#listFundingSources
+- name: list_people
+  description: List people
+  source_operation: openapi/mon-ami-openapi.yml#listPeople
+- name: update_person
+  description: Update a person
+  source_operation: openapi/mon-ami-openapi.yml#updatePerson
+- name: list_programs
+  description: List programs
+  source_operation: openapi/mon-ami-openapi.yml#listPrograms
+- name: list_provider_referrals
+  description: List provider referrals
+  source_operation: openapi/mon-ami-openapi.yml#listProviderReferrals
+- name: create_provider_referral
+  description: Create a provider referral
+  source_operation: openapi/mon-ami-openapi.yml#createProviderReferral
+- name: list_providers
+  description: List providers
+  source_operation: openapi/mon-ami-openapi.yml#listProviders
+- name: list_service_definitions
+  description: List service definitions
+  source_operation: openapi/mon-ami-openapi.yml#listServiceDefinitions
+- name: list_service_rates
+  description: List service rates
+  source_operation: openapi/mon-ami-openapi.yml#listServiceRates
+- name: list_service_records
+  description: List service records
+  source_operation: openapi/mon-ami-openapi.yml#listServiceRecords
+- name: create_service_record
+  description: Create a service record
+  source_operation: openapi/mon-ami-openapi.yml#createServiceRecord
+- name: list_sites
+  description: List sites
+  source_operation: openapi/mon-ami-openapi.yml#listSites
+- name: list_tasks
+  description: List tasks
+  source_operation: openapi/mon-ami-openapi.yml#listTasks
+- name: create_task_comment
+  description: Add a task comment
+  source_operation: openapi/mon-ami-openapi.yml#createTaskComment
+- name: list_visits
+  description: List visits
+  source_operation: openapi/mon-ami-openapi.yml#listVisits
+- name: list_volunteers
+  description: List volunteers
+  source_operation: openapi/mon-ami-openapi.yml#listVolunteers
+- name: create_volunteer
+  description: Create a volunteer
+  source_operation: openapi/mon-ami-openapi.yml#createVolunteer
+- name: list_webhooks
+  description: List webhook subscriptions
+  source_operation: openapi/mon-ami-openapi.yml#listWebhooks
+- name: create_webhook
+  description: Create a webhook subscription
+  source_operation: openapi/mon-ami-openapi.yml#createWebhook
+- name: delete_webhook
+  description: Delete a webhook subscription
+  source_operation: openapi/mon-ami-openapi.yml#deleteWebhook
+deployment:
+  mode: none
+  verified: derived
+  tools: 35
+  checked: '2026-08-12'
+  source: catalog MCP census

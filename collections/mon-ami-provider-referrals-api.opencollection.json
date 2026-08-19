@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mon Ami REST Care Plans Provider Referrals API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Provider Referrals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List provider referrals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/provider_referrals",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default 1)."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (default 25, max 50)."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values)."
+              }
+            ]
+          },
+          "docs": "List provider referrals"
+        },
+        {
+          "info": {
+            "name": "Create a provider referral",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.monami.io/api/provider_referrals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a provider referral"
+        },
+        {
+          "info": {
+            "name": "Get a provider referral",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/provider_referrals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a provider referral"
+        },
+        {
+          "info": {
+            "name": "Update a provider referral (partial)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.monami.io/api/provider_referrals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a provider referral (partial)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

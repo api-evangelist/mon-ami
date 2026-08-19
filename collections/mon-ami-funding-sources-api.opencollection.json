@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mon Ami REST Care Plans Funding Sources API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Funding Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List funding sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/funding_sources"
+          },
+          "docs": "List funding sources"
+        },
+        {
+          "info": {
+            "name": "Get a funding source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/funding_sources/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a funding source"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

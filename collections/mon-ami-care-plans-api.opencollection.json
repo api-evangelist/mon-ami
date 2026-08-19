@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mon Ami REST Care Plans API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Care Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a client's care plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id/care_plans",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (default 1)."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (default 25, max 50)."
+              }
+            ]
+          },
+          "docs": "List a client's care plans"
+        },
+        {
+          "info": {
+            "name": "Get a care plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id/care_plans/:id",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a care plan"
+        },
+        {
+          "info": {
+            "name": "List services on a care plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id/care_plans/:care_plan_id/services",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "care_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List services on a care plan"
+        },
+        {
+          "info": {
+            "name": "Get a care plan service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.monami.io/api/clients/:client_id/care_plans/:care_plan_id/services/:id",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "care_plan_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a care plan service"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
