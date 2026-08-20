@@ -181,6 +181,8 @@ apis:
   humanURL: https://docs.monami.io/
   baseURL: https://app.monami.io/api
   tags:
+  - Language
+  tags_raw:
   - Languages
   properties:
   - type: OpenAPI
@@ -335,6 +337,8 @@ apis:
   humanURL: https://docs.monami.io/
   baseURL: https://app.monami.io/api
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -401,6 +405,8 @@ apis:
   humanURL: https://docs.monami.io/
   baseURL: https://app.monami.io/api
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
