@@ -1,0 +1,35 @@
+slug: mon-ami
+provider: Mon Ami
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Provider Referrals
+  spec_file: mon-ami-provider-referrals-api-openapi.yml
+  capability_id: BC-2820.10
+  capability_id_l1: BC-2820
+  capability_name: Referral Management
+  confidence: 0.85
+  evidence: POST /provider_referrals  createProviderReferral  Create a provider referral; PATCH /provider_referrals/{id}  updateProviderReferral
+  reason: Operations create, retrieve and update referrals to providers — end-to-end referral capture
+    and tracking, which is Referral Management under Care Coordination.
+- tag: Care Plans
+  spec_file: mon-ami-care-plans-api-openapi.yml
+  capability_id: BC-2820.20
+  capability_id_l1: BC-2820
+  capability_name: Case & Care Management
+  confidence: 0.8
+  evidence: GET /clients/{client_id}/care_plans listCarePlans List a client's care plans; List services
+    on a care plan — platform "unifying case management, billing, evidence-based assessments"
+  reason: Operations manage per-client care plans and the services attached to them within a case-management
+    platform for aging and disability services, which is Case & Care Management (care planning and intervention
+    execution) rather than clinical documentation or scheduling.
