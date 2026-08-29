@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 2
+edge_count: 3
 edges:
 - tag: Provider Referrals
   spec_file: mon-ami-provider-referrals-api-openapi.yml
@@ -19,17 +19,26 @@ edges:
   capability_id_l1: BC-2820
   capability_name: Referral Management
   confidence: 0.85
-  evidence: POST /provider_referrals  createProviderReferral  Create a provider referral; PATCH /provider_referrals/{id}  updateProviderReferral
-  reason: Operations create, retrieve and update referrals to providers — end-to-end referral capture
-    and tracking, which is Referral Management under Care Coordination.
+  evidence: '"Create a provider referral", "Update a provider referral (partial)"'
+  reason: Full lifecycle (create, read, update) of referrals to service providers for clients — plainly
+    referral management within care coordination.
 - tag: Care Plans
   spec_file: mon-ami-care-plans-api-openapi.yml
   capability_id: BC-2820.20
   capability_id_l1: BC-2820
   capability_name: Case & Care Management
-  confidence: 0.8
-  evidence: GET /clients/{client_id}/care_plans listCarePlans List a client's care plans; List services
-    on a care plan — platform "unifying case management, billing, evidence-based assessments"
-  reason: Operations manage per-client care plans and the services attached to them within a case-management
-    platform for aging and disability services, which is Case & Care Management (care planning and intervention
-    execution) rather than clinical documentation or scheduling.
+  confidence: 0.78
+  evidence: '"List a client''s care plans", "List services on a care plan"'
+  reason: Care plans and the services attached to them for clients of aging/disability case-management
+    programmes — this is care planning and case management, the core of Care Coordination Management.
+- tag: Volunteers
+  spec_file: mon-ami-volunteers-api-openapi.yml
+  capability_id: BC-2910.60
+  capability_id_l1: BC-2910
+  capability_name: Volunteer & Auxiliary Services
+  confidence: 0.72
+  evidence: POST /volunteers  createVolunteer ... PATCH /volunteers/{id}  Update a volunteer (partial)
+  reason: Full CRUD over volunteer records in a platform serving Area Agencies on Aging and Ombudsman
+    offices ('people and volunteers'), which is volunteer/auxiliary programme administration supporting
+    clients and families. Some residual chance it is treated as workforce/HR records rather than a volunteer
+    programme.
