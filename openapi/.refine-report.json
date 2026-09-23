@@ -1,23 +1,7 @@
 {
   "provider": "mon-ami",
   "sources": [
-    "mon-ami-care-plans-api-openapi.yml",
-    "mon-ami-client-calls-api-openapi.yml",
-    "mon-ami-clients-api-openapi.yml",
-    "mon-ami-copays-api-openapi.yml",
-    "mon-ami-documents-api-openapi.yml",
-    "mon-ami-funding-sources-api-openapi.yml",
-    "mon-ami-languages-api-openapi.yml",
-    "mon-ami-people-api-openapi.yml",
-    "mon-ami-programs-api-openapi.yml",
-    "mon-ami-provider-referrals-api-openapi.yml",
-    "mon-ami-providers-api-openapi.yml",
-    "mon-ami-services-api-openapi.yml",
-    "mon-ami-sites-api-openapi.yml",
-    "mon-ami-tasks-api-openapi.yml",
-    "mon-ami-visits-api-openapi.yml",
-    "mon-ami-volunteers-api-openapi.yml",
-    "mon-ami-webhooks-api-openapi.yml"
+    "_original/mon-ami-openapi.yml"
   ],
   "outputs": [
     "mon-ami-care-plans-api-openapi.yml",
@@ -41,6 +25,28 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mon-ami-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mon-ami-care-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-client-calls-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-clients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-copays-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-funding-sources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-languages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-people-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-programs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-provider-referrals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-providers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-services-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-sites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-visits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-volunteers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mon-ami-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

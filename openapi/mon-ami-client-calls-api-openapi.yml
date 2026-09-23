@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Mon Ami REST Care Plans Client Calls API
+  title: Mon Ami REST Client Calls API
   version: '1.0'
   description: 'The Mon Ami REST API provides programmatic access to the Mon Ami platform for aging and disability services: clients, care plans, services and rates, copays and funding sources, documents (including InterRAI iCodes), programs and enrollments, people and volunteers, provider referrals, tasks, visits, client calls, sites, and webhook subscriptions. Interoperability is a design standard (open REST API, HL7 FHIR R4, secure SFTP). Contact Mon Ami to obtain API credentials.'
   contact:
@@ -76,12 +76,6 @@ components:
               message:
                 type: string
   responses:
-    CollectionResponse:
-      description: A paginated collection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Collection'
     NotFound:
       description: The specified record could not be found.
       content:
@@ -94,6 +88,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Resource'
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
   parameters:
     q:
       name: q

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Mon Ami REST Care Plans API
   version: '1.0'
@@ -105,12 +105,6 @@ components:
               message:
                 type: string
   responses:
-    CollectionResponse:
-      description: A paginated collection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Collection'
     NotFound:
       description: The specified record could not be found.
       content:
@@ -123,7 +117,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Resource'
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
   parameters:
+    carePlanId:
+      name: care_plan_id
+      in: path
+      required: true
+      schema:
+        type: string
     clientId:
       name: client_id
       in: path
@@ -146,12 +152,6 @@ components:
         type: integer
         default: 1
         minimum: 1
-    carePlanId:
-      name: care_plan_id
-      in: path
-      required: true
-      schema:
-        type: string
     id:
       name: id
       in: path
