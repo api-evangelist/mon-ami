@@ -33,13 +33,6 @@ components:
           schema:
             $ref: '#/components/schemas/Collection'
   schemas:
-    Resource:
-      type: object
-      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
-      properties:
-        id:
-          type: string
-      additionalProperties: true
     Collection:
       type: object
       properties:
@@ -55,6 +48,13 @@ components:
           type: object
           description: Pagination metadata including total page counts.
           additionalProperties: true
+    Resource:
+      type: object
+      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
+      properties:
+        id:
+          type: string
+      additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http

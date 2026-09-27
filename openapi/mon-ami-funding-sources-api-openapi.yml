@@ -38,7 +38,40 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
+    ResourceResponse:
+      description: A single resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
   schemas:
+    Resource:
+      type: object
+      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
+      properties:
+        id:
+          type: string
+      additionalProperties: true
     Collection:
       type: object
       properties:
@@ -54,13 +87,6 @@ components:
           type: object
           description: Pagination metadata including total page counts.
           additionalProperties: true
-    Resource:
-      type: object
-      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
-      properties:
-        id:
-          type: string
-      additionalProperties: true
     Error:
       type: object
       properties:
@@ -71,32 +97,6 @@ components:
             properties:
               message:
                 type: string
-  responses:
-    NotFound:
-      description: The specified record could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ResourceResponse:
-      description: A single resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Resource'
-    CollectionResponse:
-      description: A paginated collection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Collection'
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

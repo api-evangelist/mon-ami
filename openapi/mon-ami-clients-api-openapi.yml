@@ -98,92 +98,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  schemas:
-    Collection:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Resource'
-        links:
-          type: object
-          description: Pagination navigation URLs.
-          additionalProperties: true
-        meta:
-          type: object
-          description: Pagination metadata including total page counts.
-          additionalProperties: true
-    Resource:
-      type: object
-      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
-      properties:
-        id:
-          type: string
-      additionalProperties: true
-    Error:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-  responses:
-    UnprocessableEntity:
-      description: The request has invalid parameters. See error messages in response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified record could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Your API credentials are wrong.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ResourceResponse:
-      description: A single resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Resource'
-    TooManyRequests:
-      description: You are requesting too many records. Slow down.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    CollectionResponse:
-      description: A paginated collection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Collection'
-  parameters:
-    clientId:
-      name: client_id
-      in: path
+  requestBodies:
+    ResourceBody:
       required: true
-      schema:
-        type: string
-    q:
-      name: q
-      in: query
-      description: Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values).
-      style: deepObject
-      explode: true
-      schema:
-        type: object
-        additionalProperties: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+  parameters:
     perPage:
       name: per_page
       in: query
@@ -200,13 +122,91 @@ components:
         type: integer
         default: 1
         minimum: 1
-  requestBodies:
-    ResourceBody:
+    q:
+      name: q
+      in: query
+      description: Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values).
+      style: deepObject
+      explode: true
+      schema:
+        type: object
+        additionalProperties: true
+    clientId:
+      name: client_id
+      in: path
       required: true
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
+    UnprocessableEntity:
+      description: The request has invalid parameters. See error messages in response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Your API credentials are wrong.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: You are requesting too many records. Slow down.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ResourceResponse:
+      description: A single resource.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Resource'
+  schemas:
+    Resource:
+      type: object
+      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
+      properties:
+        id:
+          type: string
+      additionalProperties: true
+    Collection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        links:
+          type: object
+          description: Pagination navigation URLs.
+          additionalProperties: true
+        meta:
+          type: object
+          description: Pagination metadata including total page counts.
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
   securitySchemes:
     basicAuth:
       type: http
