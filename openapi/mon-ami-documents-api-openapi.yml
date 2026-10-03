@@ -65,33 +65,13 @@ paths:
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
 components:
-  requestBodies:
-    ResourceBody:
-      required: true
+  responses:
+    ResourceResponse:
+      description: A single resource.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Resource'
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-    clientId:
-      name: client_id
-      in: path
-      required: true
-      schema:
-        type: string
-  responses:
-    NotFound:
-      description: The specified record could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     CollectionResponse:
       description: A paginated collection.
       content:
@@ -104,12 +84,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ResourceResponse:
-      description: A single resource.
+    NotFound:
+      description: The specified record could not be found.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Resource'
+            $ref: '#/components/schemas/Error'
   schemas:
     Resource:
       type: object
@@ -143,6 +123,26 @@ components:
             properties:
               message:
                 type: string
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    clientId:
+      name: client_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBodies:
+    ResourceBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
   securitySchemes:
     basicAuth:
       type: http

@@ -42,65 +42,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    perPage:
-      name: per_page
-      in: query
-      description: Results per page (default 25, max 50).
-      schema:
-        type: integer
-        default: 25
-        maximum: 50
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-    page:
-      name: page
-      in: query
-      description: Page number (default 1).
-      schema:
-        type: integer
-        default: 1
-        minimum: 1
-    q:
-      name: q
-      in: query
-      description: Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values).
-      style: deepObject
-      explode: true
-      schema:
-        type: object
-        additionalProperties: true
   responses:
-    NotFound:
-      description: The specified record could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    CollectionResponse:
-      description: A paginated collection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Collection'
     ResourceResponse:
       description: A single resource.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Resource'
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Resource:
-      type: object
-      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
-      properties:
-        id:
-          type: string
-      additionalProperties: true
     Collection:
       type: object
       properties:
@@ -116,6 +77,13 @@ components:
           type: object
           description: Pagination metadata including total page counts.
           additionalProperties: true
+    Resource:
+      type: object
+      description: A Mon Ami resource object. Field-level schema is not published; id is present on persisted resources.
+      properties:
+        id:
+          type: string
+      additionalProperties: true
     Error:
       type: object
       properties:
@@ -126,6 +94,38 @@ components:
             properties:
               message:
                 type: string
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      description: Page number (default 1).
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+    perPage:
+      name: per_page
+      in: query
+      description: Results per page (default 25, max 50).
+      schema:
+        type: integer
+        default: 25
+        maximum: 50
+    q:
+      name: q
+      in: query
+      description: Filter object. Filters nest under a single q parameter using q[field]=value (or q[field][]=v1&q[field][]=v2 for multiple values).
+      style: deepObject
+      explode: true
+      schema:
+        type: object
+        additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http
