@@ -71,25 +71,41 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    ResourceResponse:
-      description: A single resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Resource'
-    CollectionResponse:
-      description: A paginated collection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Collection'
-    NotFound:
-      description: The specified record could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number (default 1).
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    perPage:
+      name: per_page
+      in: query
+      description: Results per page (default 25, max 50).
+      schema:
+        type: integer
+        default: 25
+        maximum: 50
+    carePlanId:
+      name: care_plan_id
+      in: path
+      required: true
+      schema:
+        type: string
+    clientId:
+      name: client_id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
     Collection:
       type: object
@@ -123,41 +139,25 @@ components:
             properties:
               message:
                 type: string
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-    page:
-      name: page
-      in: query
-      description: Page number (default 1).
-      schema:
-        type: integer
-        default: 1
-        minimum: 1
-    perPage:
-      name: per_page
-      in: query
-      description: Results per page (default 25, max 50).
-      schema:
-        type: integer
-        default: 25
-        maximum: 50
-    clientId:
-      name: client_id
-      in: path
-      required: true
-      schema:
-        type: string
-    carePlanId:
-      name: care_plan_id
-      in: path
-      required: true
-      schema:
-        type: string
+  responses:
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ResourceResponse:
+      description: A single resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
   securitySchemes:
     basicAuth:
       type: http

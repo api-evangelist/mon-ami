@@ -63,25 +63,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    ResourceResponse:
-      description: A single resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Resource'
-    CollectionResponse:
-      description: A paginated collection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Collection'
-    NotFound:
-      description: The specified record could not be found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Collection:
       type: object
@@ -128,6 +109,25 @@ components:
       required: true
       schema:
         type: string
+  responses:
+    NotFound:
+      description: The specified record could not be found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ResourceResponse:
+      description: A single resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
+    CollectionResponse:
+      description: A paginated collection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Collection'
   securitySchemes:
     basicAuth:
       type: http
