@@ -97,14 +97,14 @@ components:
               message:
                 type: string
   parameters:
-    id:
-      name: id
+    clientId:
+      name: client_id
       in: path
       required: true
       schema:
         type: string
-    clientId:
-      name: client_id
+    id:
+      name: id
       in: path
       required: true
       schema:
@@ -116,18 +116,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ResourceResponse:
-      description: A single resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Resource'
     CollectionResponse:
       description: A paginated collection.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Collection'
+    ResourceResponse:
+      description: A single resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Resource'
   securitySchemes:
     basicAuth:
       type: http
