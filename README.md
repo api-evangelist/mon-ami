@@ -64,6 +64,151 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Mon Ami is a company surfaced as a portfolio company of cowboy-ventures and added to the API Evangelist network as a stub for enrichment. Sector: healthcare. This profile is a lead awaiting the enrichment pipeline.
+Mon Ami is a modern data-management platform for aging and disability services, unifying case management, billing, evidence-based assessments, reporting, and compliance in one system. It serves State Units on Aging (SUAs), Area Agencies on Aging (AAAs), Intellectual & Developmental Disabilities (I/DD) programs, Long-Term Care Ombudsman offices, Medicaid HCBS providers, and Community Care Hubs. Mon Ami exposes a REST API (clients, care plans, services, copays, documents, programs, people, volunteers, referrals, tasks, visits, and webhooks) and treats interoperability as a design standard with open REST, HL7 FHIR R4, and secure SFTP. The platform is HIPAA and SOC 2 Type II certified and FedRAMP Ready.
 
-Backed by: cowboy-ventures — https://www.monami.io
+**Areas:** Company · Healthcare · Aging Services · Disability Services · Case Management · Care Coordination · FHIR · HIPAA
+
+## Mon Ami on APIs.io
+
+Everything profiled for Mon Ami is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mon-ami/](https://apis.io/providers/mon-ami/)** — or go straight to one of the APIs or properties below.
+
+### APIs (17)
+
+- [Mon Ami Care Plans API](https://apis.io/apis/mon-ami/mon-ami-care-plans-api/) — The Care Plans API from Mon Ami — 4 operation(s) for care plans.
+- [Mon Ami Client Calls API](https://apis.io/apis/mon-ami/mon-ami-client-calls-api/) — The Client Calls API from Mon Ami — 2 operation(s) for client calls.
+- [Mon Ami Clients API](https://apis.io/apis/mon-ami/mon-ami-clients-api/) — The Clients API from Mon Ami — 4 operation(s) for clients.
+- [Mon Ami Copays API](https://apis.io/apis/mon-ami/mon-ami-copays-api/) — The Copays API from Mon Ami — 2 operation(s) for copays.
+- [Mon Ami Documents API](https://apis.io/apis/mon-ami/mon-ami-documents-api/) — The Documents API from Mon Ami — 2 operation(s) for documents.
+- [Mon Ami Funding Sources API](https://apis.io/apis/mon-ami/mon-ami-funding-sources-api/) — The Funding Sources API from Mon Ami — 2 operation(s) for funding sources.
+- [Mon Ami Languages API](https://apis.io/apis/mon-ami/mon-ami-languages-api/) — The Languages API from Mon Ami — 2 operation(s) for languages.
+- [Mon Ami People API](https://apis.io/apis/mon-ami/mon-ami-people-api/) — The People API from Mon Ami — 2 operation(s) for people.
+- [Mon Ami Programs API](https://apis.io/apis/mon-ami/mon-ami-programs-api/) — The Programs API from Mon Ami — 4 operation(s) for programs.
+- [Mon Ami Provider Referrals API](https://apis.io/apis/mon-ami/mon-ami-provider-referrals-api/) — The Provider Referrals API from Mon Ami — 2 operation(s) for provider referrals.
+- [Mon Ami Providers API](https://apis.io/apis/mon-ami/mon-ami-providers-api/) — The Providers API from Mon Ami — 2 operation(s) for providers.
+- [Mon Ami Services API](https://apis.io/apis/mon-ami/mon-ami-services-api/) — The Services API from Mon Ami — 6 operation(s) for services.
+- [Mon Ami Sites API](https://apis.io/apis/mon-ami/mon-ami-sites-api/) — The Sites API from Mon Ami — 1 operation(s) for sites.
+- [Mon Ami Tasks API](https://apis.io/apis/mon-ami/mon-ami-tasks-api/) — The Tasks API from Mon Ami — 3 operation(s) for tasks.
+- [Mon Ami Visits API](https://apis.io/apis/mon-ami/mon-ami-visits-api/) — The Visits API from Mon Ami — 2 operation(s) for visits.
+- [Mon Ami Volunteers API](https://apis.io/apis/mon-ami/mon-ami-volunteers-api/) — The Volunteers API from Mon Ami — 2 operation(s) for volunteers.
+- [Mon Ami Webhooks API](https://apis.io/apis/mon-ami/mon-ami-webhooks-api/) — The Webhooks API from Mon Ami — 2 operation(s) for webhooks.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Mon Ami Webhooks](https://apis.io/asyncapis/mon-ami/mon-ami-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [mon-ami](https://apis.io/servers/mon-ami/mon-ami/)
+
+#### Collections (17)
+
+Postman and Open Collection request collections.
+
+- [Mon Ami REST Care Plans API](https://apis.io/collections/mon-ami/open-mon-ami-care-plans-api/)
+- [Mon Ami REST Care Plans Client Calls API](https://apis.io/collections/mon-ami/open-mon-ami-client-calls-api/)
+- [Mon Ami REST Care Plans Clients API](https://apis.io/collections/mon-ami/open-mon-ami-clients-api/)
+- [Mon Ami REST Care Plans Copays API](https://apis.io/collections/mon-ami/open-mon-ami-copays-api/)
+- [Mon Ami REST Care Plans Documents API](https://apis.io/collections/mon-ami/open-mon-ami-documents-api/)
+- [Mon Ami REST Care Plans Funding Sources API](https://apis.io/collections/mon-ami/open-mon-ami-funding-sources-api/)
+- [Mon Ami REST Care Plans Languages API](https://apis.io/collections/mon-ami/open-mon-ami-languages-api/)
+- [Mon Ami REST Care Plans People API](https://apis.io/collections/mon-ami/open-mon-ami-people-api/)
+- [Mon Ami REST Care Plans Programs API](https://apis.io/collections/mon-ami/open-mon-ami-programs-api/)
+- [Mon Ami REST Care Plans Provider Referrals API](https://apis.io/collections/mon-ami/open-mon-ami-provider-referrals-api/)
+- [Mon Ami REST Care Plans Providers API](https://apis.io/collections/mon-ami/open-mon-ami-providers-api/)
+- [Mon Ami REST Care Plans Services API](https://apis.io/collections/mon-ami/open-mon-ami-services-api/)
+- [Mon Ami REST Care Plans Sites API](https://apis.io/collections/mon-ami/open-mon-ami-sites-api/)
+- [Mon Ami REST Care Plans Tasks API](https://apis.io/collections/mon-ami/open-mon-ami-tasks-api/)
+- [Mon Ami REST Care Plans Visits API](https://apis.io/collections/mon-ami/open-mon-ami-visits-api/)
+- [Mon Ami REST Care Plans Volunteers API](https://apis.io/collections/mon-ami/open-mon-ami-volunteers-api/)
+- [Mon Ami REST Care Plans Webhooks API](https://apis.io/collections/mon-ami/open-mon-ami-webhooks-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Mon Ami Openapi Overlay](https://apis.io/overlays/mon-ami/mon-ami-openapi-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Mon Ami Authentication](https://apis.io/security/mon-ami/mon-ami-authentication/)
+- [Mon Ami Domain Security](https://apis.io/security/mon-ami/mon-ami-domain-security/)
+- [Mon Ami Trust Center](https://apis.io/security/mon-ami/mon-ami-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.monami.io)
+- [Documentation](https://docs.monami.io/)
+- [Getting started](https://docs.monami.io/)
+- [API reference](https://docs.monami.io/)
+- [Blog](https://www.monami.io/resources/?type=ar)
+- [Compliance](https://trust.monami.io)
+- [Trust centre](https://trust.monami.io)
+- [Terms of service](https://www.monami.io/terms-of-use)
+- [Privacy policy](https://www.monami.io/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 41.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 55.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 54.2 |
+| Access clarity | 27.6 |
+
+**Agent readiness 27.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 19.5** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mon-ami/](https://apis.io/providers/mon-ami/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mon Ami: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mon-ami/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
